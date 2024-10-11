@@ -7,18 +7,23 @@ import React, { useEffect, useRef } from "react";
 
 gsap.registerPlugin(TextPlugin, MotionPathPlugin);
 
-const Intro = () => {
+type IntroPors = {
+  timeline: gsap.core.Timeline;
+};
+
+const Intro = ({ timeline }: IntroPors) => {
   const introText = useRef(null);
   const rocket = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline();
-
-    tl.fromTo(introText.current, typing.intro.start, typing.intro.end)
+    timeline.clear();
+    timeline
+      .fromTo(introText.current, typing.intro.start, typing.intro.end)
       .fromTo(rocket.current, typing.rocket.start, typing.rocket.end)
       .fromTo(rocket.current, fade.fadeIn.start, fade.fadeIn.end)
       .fromTo(rocket.current, motion.spin.start, motion.spin.end)
-      .fromTo(rocket.current, motion.launch.start, motion.launch.end);
+      .fromTo(rocket.current, motion.launch.start, motion.launch.end)
+      .fromTo(introText.current, fade.fadeIn.start, fade.fadeIn.end);
   }, []);
 
   return (
