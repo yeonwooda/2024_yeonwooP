@@ -38,7 +38,7 @@ const Intro = () => {
           display: "inline-block",
         }}
       >
-        happy
+        🚀
       </span>
     </div>
   );

@@ -1,15 +1,17 @@
+const generateSpin = (vertex: number) => [
+  { x: vertex, y: 0 },
+  { x: 0, y: vertex },
+  { x: -vertex, y: 0 },
+  { x: 0, y: -vertex },
+];
+
 export const motion = {
   spin: {
     start: {},
     end: {
       duration: 1,
       motionPath: {
-        path: [
-          { x: 10, y: 0 },
-          { x: 0, y: 10 },
-          { x: -10, y: 0 },
-          { x: 0, y: -10 },
-        ],
+        path: generateSpin(10),
         curviness: 2,
         autoRotate: true,
       },
